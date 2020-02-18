@@ -4,8 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import com.example.expobre.Model.MegaSena
-import kotlinx.android.synthetic.main.activity_main.view.*
+import com.example.expobre.Util.MegaSena
 
 class MainActivity : AppCompatActivity() {
     private lateinit var tvNumbers : TextView

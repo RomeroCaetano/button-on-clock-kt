@@ -1,4 +1,4 @@
-package com.example.expobre.Model
+package com.example.expobre.Util
 
 import java.util.Random
 
