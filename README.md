@@ -5,3 +5,5 @@ Programação para Dispositivos Móveis
 [ExPobre](./button-sort)
 
 [Autentica](./Autentica)
+
+[Diversos](./Diversos)
