@@ -4,14 +4,16 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
+import java.net.HttpURLConnection
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
     private lateinit var btnHTML : Button
@@ -24,33 +26,32 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnSMS : Button
     private lateinit var btnYoutube : Button
     private lateinit var btnFoto : Button
-    private lateinit var imageView : ImageView
     private val REQUEST_IMAGE_CAPTURE = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        this.btnHTML = findViewById(R.id.btnHTML)
-//        this.btnDial = findViewById(R.id.btnDial)
-//        this.btnCall = findViewById(R.id.btnCall)
-//        this.btnShare = findViewById(R.id.btnShare)
-//        this.btnEmail = findViewById(R.id.btnEmail)
-//        this.btnPMapa = findViewById(R.id.btnPMapa)
-//        this.btnRMapa = findViewById(R.id.btnRMapa)
-//        this.btnSMS = findViewById(R.id.btnSMS)
-//        this.btnYoutube = findViewById(R.id.btnYoutube)
+        this.btnHTML = findViewById(R.id.btnHTML)
+        this.btnDial = findViewById(R.id.btnDial)
+        this.btnCall = findViewById(R.id.btnCall)
+        this.btnShare = findViewById(R.id.btnShare)
+        this.btnEmail = findViewById(R.id.btnEmail)
+        this.btnPMapa = findViewById(R.id.btnPMapa)
+        this.btnRMapa = findViewById(R.id.btnRMapa)
+        this.btnSMS = findViewById(R.id.btnSMS)
+        this.btnYoutube = findViewById(R.id.btnYoutube)
         this.btnFoto = findViewById(R.id.btnFoto)
-        this.imageView = findViewById(R.id.imageView)
 
-//        this.btnHTML.setOnClickListener{html()}
-//        this.btnDial.setOnClickListener{discar()}
-//        this.btnCall.setOnClickListener{ligar()}
-//        this.btnShare.setOnClickListener{compartilhar()}
-//        this.btnEmail.setOnClickListener{email()}
-//        this.btnPMapa.setOnClickListener{ponto()}
-//        this.btnRMapa.setOnClickListener{rota()}
-//        this.btnSMS.setOnClickListener{sms()}
-//        this.btnYoutube.setOnClickListener{youtube()}
+        this.btnHTML.setOnClickListener{html()}
+        this.btnDial.setOnClickListener{discar()}
+        this.btnCall.setOnClickListener{ligar()}
+        this.btnShare.setOnClickListener{compartilhar()}
+        this.btnEmail.setOnClickListener{email()}
+        this.btnPMapa.setOnClickListener{ponto()}
+        this.btnRMapa.setOnClickListener{rota()}
+        this.btnSMS.setOnClickListener{sms()}
+        this.btnYoutube.setOnClickListener{youtube()}
         this.btnFoto.setOnClickListener{foto()}
+
     }
     fun foto(){
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE).also{takePictureIntent ->
@@ -63,7 +64,14 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
+            val janela = AlertDialog.Builder(this)
+            janela.setTitle("Minha Foto")
+            janela.setIcon(R.mipmap.ic_launcher)
+            janela.setPositiveButton("ok", null)
+            val imageView = ImageView(this)
             imageView.setImageBitmap(imageBitmap)
+            janela.setView(imageView)
+            janela.create().show()
         }
     }
     fun html(){
