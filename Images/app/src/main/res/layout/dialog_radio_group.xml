@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center">
+    <RadioGroup
+        android:id="@+id/rgDialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/rbLDPI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LDPI" />
+
+        <RadioButton
+            android:id="@+id/rbMDPI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MDPI" />
+
+        <RadioButton
+            android:id="@+id/rbHDPI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HDPI" />
+
+        <RadioButton
+            android:id="@+id/rbXHDPI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="XHDPI" />
+
+        <RadioButton
+            android:id="@+id/rbXXHDPI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="XXHDPI" />
+
+        <RadioButton
+            android:id="@+id/rbXXXHDPI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="XXXHDPI" />
+    </RadioGroup>
+</LinearLayout>
