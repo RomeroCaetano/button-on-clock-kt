@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,7 +68,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Chute um Numero"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:inputType="numberDecimal"/>
         <Button
             android:id="@+id/btTentativa"
             android:layout_width="match_parent"
@@ -102,7 +104,13 @@
             android:id="@+id/tvSorting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sorteando Novamente"
+            android:text=""
             android:textSize="32sp"/>
     </LinearLayout>
+    <TextView
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="By @Romero"/>
 </LinearLayout>

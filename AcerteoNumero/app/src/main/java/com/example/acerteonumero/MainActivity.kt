@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvResultNumber: TextView
     private lateinit var tvResultText: TextView
     private lateinit var tvSorting: TextView
-    private var isResumed: Boolean = false;
     private var randomValue: Int = 0;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         this.tvResultText = findViewById(R.id.tvResultText)
         this.tvResultNumber = findViewById(R.id.tvResultNumber)
         this.tvSorting = findViewById(R.id.tvSorting)
-        this.sortGame()
         btTentativa.setOnClickListener{
             val tentativa = this.edTentativa.text
                 this@MainActivity.tvPreResultText.setText("o Número Sorteado é:")
@@ -59,22 +57,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume(){
         super.onResume();
-        if(isResumed){
-            this.sortGame();
-        }
+        this.sortGame();
 
     }
-    override fun onPause(){
-        super.onPause()
-        this.isResumed = true;
-    }
-    fun sortGame() {
+    private fun sortGame() {
         this.randomValue = Random.nextInt(1, 101)
         Log.i("APP_ACERTE", randomValue.toString())
         val divisibleNumbers = ArrayList<Int>();
         val isEven = randomValue % 2 == 0;
         var divisibleNumbersCount = 0;
-        for(x in 2..10){
+        for(x in 1..11){
             if(randomValue % x == 0){
                 divisibleNumbers.add(x)
             }
@@ -84,16 +76,16 @@ class MainActivity : AppCompatActivity() {
                 divisibleNumbersCount += 1
             }
         }
-        this@MainActivity.tvDica1.setText("Entre 1 e 10, é divisivel por: "+divisibleNumbers.joinToString(" "))
-        this@MainActivity.tvDica2.setText(if(isEven) "O Número é Par" else "O Número não é par")
+        this@MainActivity.tvDica1.setText("De 1 a 10, é divisivel por: "+divisibleNumbers.joinToString(" "))
+        this@MainActivity.tvDica2.setText(if(isEven) "É Par" else "O Número não é par")
         this@MainActivity.tvDica3.setText("Tem "+divisibleNumbersCount+" divisores")
         clearFields();
     }
-    fun clearFields(){
+    private fun clearFields(){
         this@MainActivity.edTentativa.setText("")
-        this@MainActivity.tvResultText.setText("")
-        this@MainActivity.tvResultNumber.setText("")
-        this@MainActivity.tvPreResultText.setText("")
-        this@MainActivity.tvSorting.setText("")
+        this@MainActivity.tvResultText.text = ""
+        this@MainActivity.tvResultNumber.text = ""
+        this@MainActivity.tvPreResultText.text = ""
+        this@MainActivity.tvSorting.text = ""
     }
 }
